@@ -1,5 +1,7 @@
 # Xieyi智能手环项目
 
+![Star History Chart](https://api.star-history.com/svg?repos=FuTseYi/STM32-Health-Band&type=Date)
+
 ## 项目简介
 
 这是一个基于STM32F103C8T6的智能手环开源项目，集成了多种健康监测功能，包括心率检测、血氧饱和度检测、体温检测、计步器以及跌倒检测等功能。设备通过ESP8266 WiFi模块连接手机APP，实现实时数据传输和远程监控。
