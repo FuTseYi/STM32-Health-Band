@@ -1,4 +1,14 @@
-# Xieyi智能手环开发文档
+# STM32-Health-Band 开发文档
+
+<div align="center">
+
+**完整的开发指南和技术文档**
+
+[环境搭建](#开发环境搭建) • [硬件连接](#硬件连接说明) • [软件架构](#软件架构设计) • [核心模块](#核心模块说明) • [调试指南](#调试指南)
+
+</div>
+
+---
 
 ## 目录
 1. [开发环境搭建](#开发环境搭建)
@@ -241,8 +251,8 @@ void send_data_to_app(void);
  * @param  参数2 参数2说明
  * @retval 返回值说明
  * @note   重要注意事项
- * @author Xieyi
- * @date   2025-06-25
+ * @author 謝懿Shine
+ * @date   2025-01-03
  */
 ```
 
@@ -355,8 +365,17 @@ printf("Temperature: %.1f°C\r\n", temperature);
 
 如有开发问题，请：
 1. 查阅本文档和代码注释
-2. 在项目仓库提交Issue
-3. 参考STM32和传感器官方文档
+2. 在项目仓库提交 Issue
+3. 参考 STM32 和传感器官方文档
+4. 查看 [CONTRIBUTING.md](CONTRIBUTING.md) 了解如何参与项目
 
-**作者**: Xieyi  
-**最后更新**: 2025-06-25
+## 相关文档
+
+- [README.md](README.md) - 项目概述
+- [HARDWARE.md](HARDWARE.md) - 硬件详细说明
+- [CONTRIBUTING.md](CONTRIBUTING.md) - 贡献指南
+
+---
+
+**作者**: 謝懿Shine  
+**最后更新**: 2025-01-03

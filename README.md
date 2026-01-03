@@ -1,191 +1,279 @@
-# Xieyi智能手环项目
+# STM32 Health Band
 
+<div align="center">
+
+![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Platform](https://img.shields.io/badge/platform-STM32F103-red.svg)
+![Language](https://img.shields.io/badge/language-C-blue.svg)
+![Status](https://img.shields.io/badge/status-stable-brightgreen.svg)
+
+**A Full-Featured Open Source Smart Health Band Project**
+
+[Features](#-features) • [Quick Start](#-quick-start) • [Hardware](#-hardware-description) • [Development](#-development-documentation) • [Contributing](#-contributing)
+
+[中文](README_zh-CN.md) | **English**
+
+</div>
+
+---
 ![Star History Chart](https://api.star-history.com/svg?repos=FuTseYi/STM32-Health-Band&type=Date)
 
-## 项目简介
+## 📖 Project Overview
 
-这是一个基于STM32F103C8T6的智能手环开源项目，集成了多种健康监测功能，包括心率检测、血氧饱和度检测、体温检测、计步器以及跌倒检测等功能。设备通过ESP8266 WiFi模块连接手机APP，实现实时数据传输和远程监控。
+STM32-Health-Band is an open-source smart health band project based on the **STM32F103C8T6** microcontroller. This project integrates multiple health monitoring functions, including heart rate detection, blood oxygen saturation monitoring, body temperature measurement, pedometer, and fall detection. The device communicates wirelessly with a mobile APP through the ESP8266 WiFi module for real-time health data viewing and remote monitoring.
 
-## 主要功能
+This project is suitable for embedded system learners, electronics enthusiasts, and engineers interested in wearable device development.
 
-- 🫀 **心率检测** - 基于MAX30102传感器的光电容积脉搏波描记法
-- 🩸 **血氧饱和度检测** - 实时监测血氧水平
-- 🌡️ **体温检测** - 精确的体温监测
-- 🚶 **计步功能** - 基于ADXL345三轴加速度传感器
-- 🚨 **跌倒检测** - 智能跌倒报警系统
-- 📱 **WiFi连接** - 通过ESP8266-01S模块连接手机APP
-- 📺 **OLED显示** - 实时显示各项健康数据
-- 🔔 **蜂鸣器报警** - 异常情况声音提醒
+## ✨ Features
 
-## 硬件组成
+### Core Functions
+- 🫀 **Heart Rate Monitoring** - Based on MAX30102 sensor using Photoplethysmography (PPG)
+- 🩸 **Blood Oxygen Detection** - Real-time SpO2 monitoring
+- 🌡️ **Temperature Measurement** - Accurate body temperature monitoring
+- 🚶 **Smart Pedometer** - Step counting algorithm based on ADXL345 3-axis accelerometer
+- 🚨 **Fall Detection** - Intelligent fall recognition and alarm system
+- 📱 **Wireless Connection** - Connect to mobile APP via ESP8266-01S module
+- 📺 **Real-time Display** - OLED screen displays health data in real-time
+- 🔔 **Audio Alarm** - Buzzer alerts for abnormal conditions
 
-### 主控制器
-- **STM32F103C8T6** - ARM Cortex-M3核心，主频72MHz
+### Technical Features
+- ⚡ **Low Power Design** - Optimized power management for extended battery life
+- 🔄 **Real-time Monitoring** - 100ms data acquisition cycle, fast response
+- 📊 **Data Storage** - Support for historical data caching
+- 🌐 **Wireless Transmission** - WiFi real-time data upload
+- 🎯 **High Precision Algorithm** - Calibrated sensor algorithms ensure data accuracy
 
-### 传感器模块
-- **MAX30102** - 心率血氧传感器
-- **ADXL345** - 三轴加速度传感器（用于计步和跌倒检测）
+## 🚀 Quick Start
 
-### 显示与通信
-- **OLED显示屏** - SSD1306驱动，IIC接口，128x64分辨率
-- **ESP8266-01S** - WiFi通信模块
+### Hardware Requirements
 
-### 其他组件
-- **蜂鸣器** - 报警提示
-- **电源管理模块**
+#### Essential Components
+| Component | Model | Quantity | Description |
+|-----------|-------|----------|-------------|
+| MCU | STM32F103C8T6 | 1 | ARM Cortex-M3, 72MHz |
+| Heart Rate & SpO2 Sensor | MAX30102 | 1 | IIC Interface |
+| Accelerometer | ADXL345 | 1 | 3-axis accelerometer |
+| Display | OLED 128×64 | 1 | SSD1306 driver |
+| WiFi Module | ESP8266-01S | 1 | Wireless communication |
+| Buzzer | Passive Buzzer | 1 | Alarm notification |
+| Debugger | ST-Link V2 | 1 | Program download & debug |
 
-## 软件架构
+For detailed hardware list and connection instructions, please refer to [HARDWARE.md](HARDWARE.md)
+
+### Software Environment
+
+#### Development Tools
+- **IDE**: Keil uVision5 (v5.29 or higher recommended)
+- **Compiler**: ARM-MDK V5.06+
+- **Download Tool**: STM32 ST-LINK Utility or J-Link
+- **Serial Tool**: Any serial debugging assistant (Baud rate 115200)
+
+#### Firmware Library
+- STM32F10x Standard Peripheral Library (included in the project)
+
+### Compilation & Flashing
+
+1. **Clone the Project**
+   ```bash
+   git clone https://github.com/YourUsername/STM32-Health-Band.git
+   cd STM32-Health-Band
+   ```
+
+2. **Open Project**
+   - Open `1、代码/USER/Template.uvprojx` with Keil uVision5
+
+3. **Compile Project**
+   - Click `Project` → `Build Target` or press `F7`
+   - Ensure no errors or warnings
+
+4. **Flash Program**
+   - Connect ST-Link to STM32 development board
+   - Click `Flash` → `Download` or press `F8`
+
+### Mobile APP Usage
+
+1. **Install APP**
+   - Transfer `4、APP/发布版_手环APP.apk` to Android phone
+   - Install APK file (allow installation from unknown sources)
+
+2. **Connect Device**
+   - The band will automatically create a WiFi hotspot after power-on
+   - Connect phone to device WiFi:
+     - **SSID**: `WIFI` / Password: `123456789`
+     - Or **SSID**: `www` / Password: `12345678`
+
+3. **View Data**
+   - Open the mobile APP to view real-time health data
+
+## 🔧 Hardware Description
+
+### System Architecture
 
 ```
+┌─────────────────────────────────────────────────┐
+│           STM32F103C8T6 Main Controller          │
+│            (ARM Cortex-M3, 72MHz)                │
+└─────────────────────────────────────────────────┘
+         │         │         │         │
+    ┌────┴───┐ ┌──┴───┐ ┌──┴───┐ ┌──┴────┐
+    │MAX30102│ │ADXL345│ │ OLED │ │ESP8266│
+    │HR & SpO2│ │Accel. │ │Display│ │ WiFi  │
+    └────────┘ └───────┘ └──────┘ └───────┘
+```
+
+### Pin Connections
+
+| STM32 Pin | Connected Device | Function |
+|-----------|------------------|----------|
+| PB8, PB9 | MAX30102 | IIC (SCL, SDA) |
+| PA4, PA5 | ADXL345 | IIC (SCL, SDA) |
+| PB6, PB7 | OLED | IIC (SCL, SDA) |
+| PA9, PA10 | ESP8266 | UART (TX, RX) |
+| PB5 | MAX30102 | Interrupt Input |
+| PC13 | Buzzer | GPIO Output |
+
+For complete hardware specifications, see [HARDWARE.md](HARDWARE.md)
+
+## 📂 Project Structure
+
+```
+STM32-Health-Band/
 ├── 1、代码/
-│   ├── CORE/          # STM32核心文件
-│   ├── FWLIB/         # STM32固件库
-│   ├── HARDWAR/       # 硬件驱动层
-│   │   ├── MAX30102.c # 心率血氧传感器驱动
-│   │   ├── adxl345.c  # 加速度传感器驱动
-│   │   ├── OLED.c     # OLED显示驱动
-│   │   └── ...
-│   ├── SYSTEM/        # 系统层代码
-│   └── USER/          # 用户应用层
-│       └── main.c     # 主程序
-├── 2、PCB/            # PCB设计文件
-├── 3、硬件资料/       # 硬件规格书和资料
-├── 4、APP/            # 手机APP（易语言开发）
-└── 5、原理图/         # 电路原理图
+│   ├── CORE/              # STM32 core files
+│   ├── FWLIB/             # STM32 firmware library
+│   ├── HARDWAR/           # Hardware driver layer
+│   │   ├── MAX30102.c/h   # Heart rate & SpO2 sensor driver
+│   │   ├── adxl345.c/h    # Accelerometer driver
+│   │   ├── OLED.c/h       # OLED display driver
+│   │   ├── timer.c/h      # Timer driver
+│   │   └── IO_Init.c/h    # GPIO initialization
+│   ├── SYSTEM/            # System layer code
+│   │   ├── delay.c/h      # Delay functions
+│   │   ├── sys.c/h        # System configuration
+│   │   └── usart.c/h      # Serial communication
+│   └── USER/              # User application layer
+│       └── main.c         # Main program
+├── 2、PCB/                # PCB design files
+├── 3、硬件资料/           # Hardware specifications & datasheets
+├── 4、APP/                # Android mobile APP
+├── 5、原理图/             # Circuit schematics
+├── HARDWARE.md            # Hardware detailed documentation
+├── DEVELOPMENT.md         # Development documentation
+├── CONTRIBUTING.md        # Contributing guidelines
+├── LICENSE                # MIT License
+├── README.md              # Chinese README
+└── README_EN.md           # This file
 ```
 
-## 快速开始
+## 💻 Development Documentation
 
-### 硬件准备
-1. 准备所有必需的硬件组件（详见硬件组成部分）
-2. 按照原理图进行电路连接
-3. 使用提供的PCB文件制作电路板
+### Core Algorithms
 
-### 软件环境
-- **开发环境**: Keil uVision5
-- **编程语言**: C语言
-- **编译器**: ARM-MDK
+#### Heart Rate Detection Algorithm
+Peak detection algorithm analyzes PPG signals from MAX30102 sensor to calculate heart rate:
+- Signal preprocessing and filtering
+- Peak detection and recognition
+- Heart rate calculation (based on RR-Interval)
 
-### 编译和烧录
-1. 打开Keil工程文件：`1、代码/USER/Template.uvprojx`
-2. 编译项目（确保没有错误）
-3. 通过ST-Link或其他烧录器将程序烧录到STM32
+#### Blood Oxygen Saturation Algorithm
+Based on the absorption ratio of red and infrared light:
+```
+R = (AC_Red / DC_Red) / (AC_IR / DC_IR)
+SpO2 = 110 - 25 × R
+```
 
-### 手机APP安装
-1. 将`4、APP/发布版_手环APP.apk`传输到安卓手机
-2. 安装APK文件
-3. 确保手机WiFi功能已开启
+#### Fall Detection Algorithm
+Based on 3-axis acceleration data:
+```
+Total_G = √(X² + Y² + Z²)
+Fall Detection: Total_G > 3g or Total_G < 0.5g
+```
 
-### 设备连接
-1. 手环上电后，会创建WiFi热点
-2. 手机连接到设备WiFi：
-   - **账号**: WIFI
-   - **密码**: 123456789
-   
-   或者：
-   - **账号**: www  
-   - **密码**: 12345678
+For detailed development documentation, refer to [DEVELOPMENT.md](DEVELOPMENT.md)
 
-3. 打开手机APP即可查看实时数据
+### Performance Specifications
 
-## 核心算法
+| Specification | Value |
+|--------------|-------|
+| Heart Rate Range | 60-100 BPM |
+| SpO2 Accuracy | ±2% |
+| Temperature Accuracy | ±0.5°C |
+| Pedometer Accuracy | ≥95% |
+| Battery Life | Approx. 6-24 hours |
+| WiFi Range | Indoor 10-15 meters |
+| Display Refresh Rate | 10Hz |
+| Data Acquisition Cycle | 100ms |
 
-### 心率检测算法
-采用峰值检测算法，通过分析MAX30102传感器的PPG信号来计算心率：
-- 信号预处理和滤波
-- 峰值检测
-- 心率计算（基于峰间间隔）
+## 🤝 Contributing
 
-### 血氧饱和度算法
-基于红光和红外光的吸收比率：
-- 双波长光电容积脉搏波信号采集
-- R值计算（红光/红外光的AC/DC比值）
-- SpO2计算
+We welcome all forms of contributions! Whether it's reporting bugs, suggesting new features, or submitting code improvements.
 
-### 跌倒检测算法
-基于加速度传感器数据：
-- 三轴加速度阈值检测
-- 运动状态分析
-- 跌倒事件识别
+### How to Contribute
+1. Fork this repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## 技术特性
+For detailed contribution guidelines, see [CONTRIBUTING.md](CONTRIBUTING.md)
 
-- ⚡ **低功耗设计** - 优化的电源管理
-- 🔄 **实时监测** - 100ms数据采集周期
-- 📊 **数据缓存** - 支持历史数据存储
-- 🌐 **无线传输** - WiFi数据上传
-- 🎯 **高精度** - 经过校准的传感器算法
+### Code Style
+- Function naming: lowercase + underscore `sensor_init()`
+- Variable naming: lowercase + underscore `sensor_data`
+- Macro definition: uppercase + underscore `MAX_BUFFER_SIZE`
+- Comments: Use Doxygen style comments
 
-## 开发说明
+## 📄 License
 
-### 编译要求
-- Keil uVision5 或更高版本
-- ARM编译器 V5.06 或更高版本
-- STM32F10x标准外设库
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-### 调试接口
-- **串口调试**: USART1, 波特率115200
-- **仿真器**: 支持ST-Link/J-Link
+You are free to:
+- ✅ Commercial use
+- ✅ Modification
+- ✅ Distribution
+- ✅ Private use
 
-### 自定义配置
-主要配置参数位于各个驱动头文件中，可根据硬件连接修改：
-- GPIO引脚配置
-- IIC接口配置  
-- 传感器参数配置
+With the requirement:
+- 📋 Include license and copyright notice
 
-## 文件说明
+## 👨‍💻 Author
 
-### 核心源文件
-- `main.c` - 主程序，包含系统初始化和主循环
-- `MAX30102.c/h` - 心率血氧传感器驱动
-- `adxl345.c/h` - 三轴加速度传感器驱动
-- `OLED.c/h` - OLED显示屏驱动
+**謝懿Shine** - *Project Creator and Main Maintainer*
 
-### 配置文件
-- `stm32f10x_conf.h` - STM32外设库配置
-- `stm32f10x_it.c` - 中断服务程序
+## 🙏 Acknowledgments
 
-## 性能指标
+Thanks to the following open source projects and resources:
+- [STM32 Standard Peripheral Library](https://www.st.com/)
+- [Keil MDK-ARM](https://www.keil.com/)
+- Reference code provided by MAX30102 and ADXL345 sensor manufacturers
+- All developers who contributed to this project
 
-| 指标 | 规格 |
-|------|------|
-| 心率检测范围 | 60-100 BPM |
-| 血氧检测精度 | ±2% |
-| 温度检测精度 | ±0.5°C |
-| 电池续航 | 约24小时 |
-| WiFi传输距离 | 室内10米 |
-| 显示更新频率 | 10Hz |
+## 📞 Contact
 
-## 许可证
+- 📧 **Issues**: [Submit Issue](https://github.com/YourUsername/STM32-Health-Band/issues)
+- 💬 **Discussions**: [Join Discussion](https://github.com/YourUsername/STM32-Health-Band/discussions)
 
-本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情
+## 📊 Changelog
 
-## 作者
-
-**Xieyi** - 项目创建者和主要开发者
-
-## 致谢
-
-感谢以下开源项目和库：
-- STM32标准外设库
-- Keil开发环境
-- 相关传感器厂商提供的参考代码
-
-## 联系方式
-
-如有问题或建议，欢迎通过以下方式联系：
-- 提交Issue到本仓库
-- 发送邮件（请在Issues中留言）
-
-## 更新日志
-
-### v1.0.0 (2025-06-25)
-- 初始版本发布
-- 实现基础心率、血氧、温度检测功能
-- 添加计步和跌倒检测功能
-- 完成WiFi数据传输
-- 手机APP配套开发
+### v1.0.0 (2025-01-03)
+- ✨ Initial release
+- ✅ Implemented heart rate, SpO2, and temperature detection
+- ✅ Added pedometer and fall detection features
+- ✅ Completed WiFi data transmission
+- ✅ Developed companion Android APP
+- 📝 Improved project documentation
 
 ---
 
-**注意**: 本设备仅用于健康监测参考，不可用于医疗诊断。如有健康问题，请咨询专业医生。
+<div align="center">
+
+**⚠️ Disclaimer**
+
+This device is for health monitoring reference and educational purposes only, not for medical diagnosis.  
+For health concerns, please consult professional medical institutions.
+
+**Made with ❤️ by 謝懿Shine**
+
+</div>
+

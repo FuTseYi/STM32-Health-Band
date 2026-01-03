@@ -1,6 +1,16 @@
 # 贡献指南
 
-感谢您对Xieyi智能手环项目的关注！我们欢迎任何形式的贡献，包括但不限于代码改进、文档完善、问题反馈和功能建议。
+<div align="center">
+
+**欢迎为 STM32-Health-Band 项目做出贡献！**
+
+[报告问题](#-报告问题-bug-reports) • [功能请求](#-功能请求-feature-requests) • [代码贡献](#-代码贡献) • [文档贡献](#-文档贡献) • [社区准则](#社区准则)
+
+</div>
+
+---
+
+感谢您对 STM32-Health-Band 项目的关注！我们欢迎任何形式的贡献，包括但不限于代码改进、文档完善、问题反馈和功能建议。
 
 ## 如何贡献
 
@@ -88,7 +98,7 @@ typedef struct {
  * @param  param2 参数2说明
  * @retval 返回值说明
  * @note   重要注意事项
- * @author Xieyi
+ * @author 謝懿Shine
  */
 ```
 
@@ -258,22 +268,32 @@ feat(sensor): 添加MPU6050陀螺仪支持
 感谢所有为项目做出贡献的开发者！您的贡献让这个项目变得更好。
 
 ### 贡献者名单
-- **Xieyi** - 项目创始人和主要维护者
+- **謝懿Shine** - 项目创始人和主要维护者
 
 ## 许可证
 
-通过向此项目贡献代码，您同意您的贡献将在[MIT License](LICENSE)下进行许可。
+通过向此项目贡献代码，您同意您的贡献将在 [MIT License](LICENSE) 下进行许可。
 
 ## 联系方式
 
 如有任何疑问，请：
-1. 在相应Issue中留言
-2. 创建新的Discussion
-3. 通过GitHub私信联系维护者
+1. 在相应 Issue 中留言
+2. 创建新的 Discussion
+3. 通过 GitHub 私信联系维护者
+
+## 相关文档
+
+- [README.md](README.md) - 项目概述
+- [DEVELOPMENT.md](DEVELOPMENT.md) - 开发文档
+- [HARDWARE.md](HARDWARE.md) - 硬件说明
 
 ---
 
+<div align="center">
+
 再次感谢您的贡献！让我们一起打造更好的智能手环项目！
 
-**维护者**: Xieyi  
-**最后更新**: 2025-06-25
+**维护者**: 謝懿Shine  
+**最后更新**: 2025-01-03
+
+</div>
